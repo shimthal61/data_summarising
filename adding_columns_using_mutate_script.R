@@ -1,3 +1,5 @@
+library(tidyverse)
+
 #Adding new columns to our dataset
 mpg %>%
   group_by(manufacturer) %>%
@@ -12,4 +14,4 @@ mpg_with_mean <- mpg %>%
   #Removing the group we just created
   ungroup() %>%
   mutate(mean_hwy = mean(hwy), sd_hwy = sd(hwy)) %>%
-  select(-class, -trans)
+  select_if(is.numeric)
